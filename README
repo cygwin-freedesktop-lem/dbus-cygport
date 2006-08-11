@@ -17,39 +17,39 @@ export the two variables DBUS_SESSION_BUS_ADDRESS and DBUS_SESSION_BUS_PID
 which are given to stdout.
 
 Runtime requirements:
-  cygwin-1.5.20-1 (20060604)
-  libiconv2-1.9.2-1
-  libxml2-2.6.24-1
-
-Glib interface requirements:
-  glib2-2.10.2-1
-
-Additional dbus-viewer requirements:
+  cygwin-1.5.21-1
+  libiconv2-1.9.2-2
+  libxml2-2.6.26-1
+(dbus-glib)
+  glib2-2.10.3-1
+(dbus-tools)
   expat-1.95.8-1
-  glib2-2.10.2-1
-  gtk2-x11-2.8.17-1
-
-Python interface requirements:
-  python-2.4.3-1
-
-Qt interface requirements:
+  glib2-2.10.3-1
+  gtk2-x11-2.8.20-1
+(dbus-qt)
   qt3-3.3.6-1
+(dbus-sharp)
+  mono-1.1.16.1-1
+(pydbus)
+  python-2.4.3-1
 
 Build requirements:
 (besides corresponding -devel packages)
-  cygwin-1.5.20-1 (20060604)
+  cygwin-1.5.21-1
   autoconf2.5-2.59-2
   automake1.9-1.9.6-1
-  binutils-20050610-1
-  cygport-0.2.1-1
+  binutils-20060709-1
+  cygport-0.2.5-1
   gawk-3.1.5-2
   gcc-core-3.4.4-1
   gcc-g++-3.4.4-1
   libtool1.5-1.5.22-1
-  make-3.80-1
+  make-3.81-1
+  mono-tools-1.1.11-1
+  monodoc-1.1.16-1
   pkg-config-0.20-1
   pyrex-0.9.3-2
-  sed-4.1.4-1
+  sed-4.1.5-1
 
 Canonical website:
   http://www.freedesktop.org/Software/dbus
@@ -60,40 +60,43 @@ Canonical download:
 -------------------------------------------
 
 Build instructions:
-  unpack dbus-0.60-1-src.tar.bz2
+  unpack dbus-0.62-X-src.tar.bz2
     if you use setup to install this src package, it will be
 	 unpacked under /usr/src automatically
   cd /usr/src
-  cygport ./dbus-0.60-1.cygport all
+  cygport ./dbus-0.62-X.cygport all
 
 This will create:
-  /usr/src/dbus-0.60-1-src.tar.bz2
-  /usr/src/dbus-0.60-1.tar.bz2
-  /usr/src/dbus-doc-0.60-1.tar.bz2
-  /usr/src/dbus-utils-0.60-1.tar.bz2
-  /usr/src/dbus1-devel-0.60-1.tar.bz2
-  /usr/src/libdbus-glib_1_2-0.60-1.tar.bz2
-  /usr/src/libdbus-qt_1_1-0.60-1.tar.bz2
-  /usr/src/libdbus1_2-0.60-1.tar.bz2
-  /usr/src/pydbus-0.60-1.tar.bz2
+  /usr/src/dbus-0.62-X-src.tar.bz2
+  /usr/src/dbus-0.62-X.tar.bz2
+  /usr/src/dbus-doc-0.62-X.tar.bz2
+  /usr/src/dbus-sharp-0.62-X.tar.bz2
+  /usr/src/dbus-utils-0.62-X.tar.bz2
+  /usr/src/libdbus-glib_1_2-0.62-X.tar.bz2
+  /usr/src/libdbus-qt_1_1-0.62-X.tar.bz2
+  /usr/src/libdbus1-devel-0.62-X.tar.bz2
+  /usr/src/libdbus1_2-0.62-X.tar.bz2
+  /usr/src/pydbus-0.62-X.tar.bz2
 
 -------------------------------------------
 
 Files included in the binary package:
 
+  /etc/dbus-1/session.conf
+  /etc/dbus-1/system.conf
   /usr/bin/dbus-cleanup-sockets.exe
   /usr/bin/dbus-daemon.exe
   /usr/bin/dbus-launch.exe
   /usr/bin/dbus-send.exe
-  /usr/share/doc/Cygwin/dbus-0.60.README
-  /usr/share/doc/dbus-0.60/AUTHORS
-  /usr/share/doc/dbus-0.60/ChangeLog
-  /usr/share/doc/dbus-0.60/COPYING
-  /usr/share/doc/dbus-0.60/HACKING
-  /usr/share/doc/dbus-0.60/INSTALL
-  /usr/share/doc/dbus-0.60/NEWS
-  /usr/share/doc/dbus-0.60/README
-  /usr/share/doc/dbus-0.61/TODO
+  /usr/share/doc/Cygwin/dbus-0.62.README
+  /usr/share/doc/dbus-0.62/AUTHORS
+  /usr/share/doc/dbus-0.62/ChangeLog
+  /usr/share/doc/dbus-0.62/COPYING
+  /usr/share/doc/dbus-0.62/HACKING
+  /usr/share/doc/dbus-0.62/INSTALL
+  /usr/share/doc/dbus-0.62/NEWS
+  /usr/share/doc/dbus-0.62/README
+  /usr/share/doc/dbus-0.62/TODO
   /usr/share/man/man1/dbus-cleanup-sockets.1.gz
   /usr/share/man/man1/dbus-daemon.1.gz
   /usr/share/man/man1/dbus-launch.1.gz
@@ -106,13 +109,9 @@ Files included in the utils package:
   /usr/bin/dbus-viewer.exe
   /usr/share/man/man1/dbus-monitor.1.gz
 
-Files included in the libdbus package:
+Files included in the runtime library packages:
 
-  /etc/dbus-1/session.conf
-  /etc/dbus-1/system.conf
   /usr/bin/cygdbus-1-2.dll
-
-Files included in the binding library packages:
 
   /usr/bin/cygdbus-glib-1-2.dll
 
@@ -120,11 +119,19 @@ Files included in the binding library packages:
 
 Files included in the pydbus package:
 
+  /usr/lib/python2.4/site-packages/dbus.pth
+  /usr/lib/python2.4/site-packages/dbus/__init__.py
+  /usr/lib/python2.4/site-packages/dbus/__init__.pyc
+  /usr/lib/python2.4/site-packages/dbus/__init__.pyo
+  /usr/lib/python2.4/site-packages/dbus/_dbus.py
+  /usr/lib/python2.4/site-packages/dbus/_dbus.pyc
+  /usr/lib/python2.4/site-packages/dbus/_dbus.pyo
+  /usr/lib/python2.4/site-packages/dbus/_util.py
+  /usr/lib/python2.4/site-packages/dbus/_util.pyc
+  /usr/lib/python2.4/site-packages/dbus/_util.pyo
   /usr/lib/python2.4/site-packages/dbus/dbus_bindings.dll
-  /usr/lib/python2.4/site-packages/dbus/dbus_bindings.dll.a
   /usr/lib/python2.4/site-packages/dbus/dbus_bindings.la
   /usr/lib/python2.4/site-packages/dbus/dbus_glib_bindings.dll
-  /usr/lib/python2.4/site-packages/dbus/dbus_glib_bindings.dll.a
   /usr/lib/python2.4/site-packages/dbus/dbus_glib_bindings.la
   /usr/lib/python2.4/site-packages/dbus/decorators.py
   /usr/lib/python2.4/site-packages/dbus/decorators.pyc
@@ -150,16 +157,17 @@ Files included in the pydbus package:
   /usr/lib/python2.4/site-packages/dbus/types.py
   /usr/lib/python2.4/site-packages/dbus/types.pyc
   /usr/lib/python2.4/site-packages/dbus/types.pyo
-  /usr/lib/python2.4/site-packages/dbus/_dbus.py
-  /usr/lib/python2.4/site-packages/dbus/_dbus.pyc
-  /usr/lib/python2.4/site-packages/dbus/_dbus.pyo
-  /usr/lib/python2.4/site-packages/dbus/_util.py
-  /usr/lib/python2.4/site-packages/dbus/_util.pyc
-  /usr/lib/python2.4/site-packages/dbus/_util.pyo
-  /usr/lib/python2.4/site-packages/dbus/__init__.py
-  /usr/lib/python2.4/site-packages/dbus/__init__.pyc
-  /usr/lib/python2.4/site-packages/dbus/__init__.pyo
-  /usr/lib/python2.4/site-packages/dbus.pth
+
+Files included in the dbus-sharp package:
+
+  /usr/lib/mono/dbus-sharp/dbus-sharp.dll
+  /usr/lib/mono/gac/dbus-sharp/0.62.0.0__9eef2692033670f5/dbus-sharp.dll
+  /usr/lib/mono/gac/dbus-sharp/0.62.0.0__9eef2692033670f5/dbus-sharp.dll.config
+  /usr/lib/mono/gac/dbus-sharp/0.62.0.0__9eef2692033670f5/dbus-sharp.dll.mdb
+  /usr/lib/monodoc/sources/dbus-sharp-docs.source
+  /usr/lib/monodoc/sources/dbus-sharp-docs.tree
+  /usr/lib/monodoc/sources/dbus-sharp-docs.zip
+  /usr/lib/pkgconfig/dbus-sharp.pc
 
 Files included in the devel package:
 
@@ -181,6 +189,7 @@ Files included in the devel package:
   /usr/include/dbus-1.0/dbus/dbus-qt.h
   /usr/include/dbus-1.0/dbus/dbus-server.h
   /usr/include/dbus-1.0/dbus/dbus-shared.h
+  /usr/include/dbus-1.0/dbus/dbus-signature.h
   /usr/include/dbus-1.0/dbus/dbus-threads.h
   /usr/include/dbus-1.0/dbus/dbus-types.h
   /usr/include/dbus-1.0/dbus/dbus.h
@@ -198,409 +207,395 @@ Files included in the devel package:
 
 Files included in the doc package:
 
-  /usr/share/doc/dbus-0.61/api/annotated.html
-  /usr/share/doc/dbus-0.61/api/dbus-address_8c-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-address_8h-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-arch-deps_8h-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-auth-script_8c-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-auth-script_8h-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-auth-util_8c-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-auth_8c-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-auth_8h-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-binding-tool-glib_8c-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-binding-tool-glib_8h-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-bus_8c-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-bus_8h-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-connection-internal_8h-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-connection_8c-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-connection_8h-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-dataslot_8c-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-dataslot_8h-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-errors_8c-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-errors_8h-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-gidl_8c-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-gidl_8h-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-glib-error-enum_8h-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-glib-error-switch_8h-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-glib-lowlevel_8h-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-glib-tool_8c-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-glib-tool_8h-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-glib_8c-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-glib_8h-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-gloader-expat_8c-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-gmain_8c-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-gmarshal_8c-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-gmarshal_8h-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-gobject_8c-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-gobject_8h-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-gparser_8c-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-gparser_8h-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-gproxy_8c-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-gsignature_8c-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-gsignature_8h-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-gtest-main_8c-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-gtest_8c-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-gtest_8h-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-gthread_8c-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-gtype-specialized_8c-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-gtype-specialized_8h-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-gutils_8c-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-gutils_8h-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-gvalue-utils_8c-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-gvalue-utils_8h-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-gvalue_8c-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-gvalue_8h-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-hash_8c-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-hash_8h-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-internals_8c-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-internals_8h-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-keyring_8c-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-keyring_8h-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-list_8c-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-list_8h-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-macros_8h-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-mainloop_8c-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-mainloop_8h-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-marshal-basic_8c-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-marshal-basic_8h-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-marshal-byteswap-util_8c-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-marshal-byteswap_8c-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-marshal-byteswap_8h-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-marshal-header_8c-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-marshal-header_8h-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-marshal-recursive-util_8c-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-marshal-recursive_8c-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-marshal-recursive_8h-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-marshal-validate-util_8c-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-marshal-validate_8c-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-marshal-validate_8h-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-memory_8c-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-memory_8h-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-mempool_8c-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-mempool_8h-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-message-factory_8c-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-message-factory_8h-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-message-internal_8h-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-message-private_8h-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-message-util_8c-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-message_8c-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-message_8h-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-object-tree_8c-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-object-tree_8h-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-pending-call_8c-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-pending-call_8h-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-protocol_8h-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-resources_8c-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-resources_8h-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-server-debug-pipe_8c-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-server-debug-pipe_8h-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-server-protected_8h-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-server-unix_8c-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-server-unix_8h-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-server_8c-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-server_8h-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-sha_8c-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-sha_8h-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-shared_8h-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-shell_8c-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-shell_8h-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-signature_8c-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-signature_8h-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-spawn_8c-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-spawn_8h-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-string-private_8h-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-string-util_8c-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-string_8c-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-string_8h-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-sysdeps-util_8c-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-sysdeps_8c-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-sysdeps_8h-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-test-main_8c-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-test_8c-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-test_8h-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-threads-internal_8h-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-threads_8c-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-threads_8h-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-timeout_8c-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-timeout_8h-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-transport-protected_8h-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-transport-unix_8c-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-transport-unix_8h-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-transport_8c-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-transport_8h-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-types_8h-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-userdb-util_8c-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-userdb_8c-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-userdb_8h-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-watch_8c-source.html
-  /usr/share/doc/dbus-0.61/api/dbus-watch_8h-source.html
-  /usr/share/doc/dbus-0.61/api/dbus_8h-source.html
-  /usr/share/doc/dbus-0.61/api/deprecated.html
-  /usr/share/doc/dbus-0.61/api/doxygen.css
-  /usr/share/doc/dbus-0.61/api/doxygen.png
-  /usr/share/doc/dbus-0.61/api/example-client_8c-source.html
-  /usr/share/doc/dbus-0.61/api/example-service-glue_8h-source.html
-  /usr/share/doc/dbus-0.61/api/example-service_8c-source.html
-  /usr/share/doc/dbus-0.61/api/example-signal-emitter-glue_8h-source.html
-  /usr/share/doc/dbus-0.61/api/example-signal-emitter_8c-source.html
-  /usr/share/doc/dbus-0.61/api/example-signal-recipient_8c-source.html
-  /usr/share/doc/dbus-0.61/api/files.html
-  /usr/share/doc/dbus-0.61/api/functions.html
-  /usr/share/doc/dbus-0.61/api/functions_0x62.html
-  /usr/share/doc/dbus-0.61/api/functions_0x63.html
-  /usr/share/doc/dbus-0.61/api/functions_0x64.html
-  /usr/share/doc/dbus-0.61/api/functions_0x65.html
-  /usr/share/doc/dbus-0.61/api/functions_0x66.html
-  /usr/share/doc/dbus-0.61/api/functions_0x67.html
-  /usr/share/doc/dbus-0.61/api/functions_0x68.html
-  /usr/share/doc/dbus-0.61/api/functions_0x69.html
-  /usr/share/doc/dbus-0.61/api/functions_0x6b.html
-  /usr/share/doc/dbus-0.61/api/functions_0x6c.html
-  /usr/share/doc/dbus-0.61/api/functions_0x6d.html
-  /usr/share/doc/dbus-0.61/api/functions_0x6e.html
-  /usr/share/doc/dbus-0.61/api/functions_0x6f.html
-  /usr/share/doc/dbus-0.61/api/functions_0x70.html
-  /usr/share/doc/dbus-0.61/api/functions_0x71.html
-  /usr/share/doc/dbus-0.61/api/functions_0x72.html
-  /usr/share/doc/dbus-0.61/api/functions_0x73.html
-  /usr/share/doc/dbus-0.61/api/functions_0x74.html
-  /usr/share/doc/dbus-0.61/api/functions_0x75.html
-  /usr/share/doc/dbus-0.61/api/functions_0x76.html
-  /usr/share/doc/dbus-0.61/api/functions_0x77.html
-  /usr/share/doc/dbus-0.61/api/functions_0x78.html
-  /usr/share/doc/dbus-0.61/api/functions_0x7a.html
-  /usr/share/doc/dbus-0.61/api/functions_vars.html
-  /usr/share/doc/dbus-0.61/api/functions_vars_0x62.html
-  /usr/share/doc/dbus-0.61/api/functions_vars_0x63.html
-  /usr/share/doc/dbus-0.61/api/functions_vars_0x64.html
-  /usr/share/doc/dbus-0.61/api/functions_vars_0x65.html
-  /usr/share/doc/dbus-0.61/api/functions_vars_0x66.html
-  /usr/share/doc/dbus-0.61/api/functions_vars_0x67.html
-  /usr/share/doc/dbus-0.61/api/functions_vars_0x68.html
-  /usr/share/doc/dbus-0.61/api/functions_vars_0x69.html
-  /usr/share/doc/dbus-0.61/api/functions_vars_0x6b.html
-  /usr/share/doc/dbus-0.61/api/functions_vars_0x6c.html
-  /usr/share/doc/dbus-0.61/api/functions_vars_0x6d.html
-  /usr/share/doc/dbus-0.61/api/functions_vars_0x6e.html
-  /usr/share/doc/dbus-0.61/api/functions_vars_0x6f.html
-  /usr/share/doc/dbus-0.61/api/functions_vars_0x70.html
-  /usr/share/doc/dbus-0.61/api/functions_vars_0x71.html
-  /usr/share/doc/dbus-0.61/api/functions_vars_0x72.html
-  /usr/share/doc/dbus-0.61/api/functions_vars_0x73.html
-  /usr/share/doc/dbus-0.61/api/functions_vars_0x74.html
-  /usr/share/doc/dbus-0.61/api/functions_vars_0x75.html
-  /usr/share/doc/dbus-0.61/api/functions_vars_0x76.html
-  /usr/share/doc/dbus-0.61/api/functions_vars_0x77.html
-  /usr/share/doc/dbus-0.61/api/functions_vars_0x78.html
-  /usr/share/doc/dbus-0.61/api/functions_vars_0x7a.html
-  /usr/share/doc/dbus-0.61/api/group__DBus.html
-  /usr/share/doc/dbus-0.61/api/group__DBusAddress.html
-  /usr/share/doc/dbus-0.61/api/group__DBusAddressInternals.html
-  /usr/share/doc/dbus-0.61/api/group__DBusAuth.html
-  /usr/share/doc/dbus-0.61/api/group__DBusAuthInternals.html
-  /usr/share/doc/dbus-0.61/api/group__DBusBus.html
-  /usr/share/doc/dbus-0.61/api/group__DBusBusInternals.html
-  /usr/share/doc/dbus-0.61/api/group__DBusConnection.html
-  /usr/share/doc/dbus-0.61/api/group__DBusConnectionInternals.html
-  /usr/share/doc/dbus-0.61/api/group__DBusDataSlot.html
-  /usr/share/doc/dbus-0.61/api/group__DBusErrorInternals.html
-  /usr/share/doc/dbus-0.61/api/group__DBusErrors.html
-  /usr/share/doc/dbus-0.61/api/group__DBusGLib.html
-  /usr/share/doc/dbus-0.61/api/group__DBusGLibInternals.html
-  /usr/share/doc/dbus-0.61/api/group__DBusHashTable.html
-  /usr/share/doc/dbus-0.61/api/group__DBusHashTableInternals.html
-  /usr/share/doc/dbus-0.61/api/group__DBusInternals.html
-  /usr/share/doc/dbus-0.61/api/group__DBusInternalsUtils.html
-  /usr/share/doc/dbus-0.61/api/group__DBusKeyring.html
-  /usr/share/doc/dbus-0.61/api/group__DBusKeyringInternals.html
-  /usr/share/doc/dbus-0.61/api/group__DBusList.html
-  /usr/share/doc/dbus-0.61/api/group__DBusListInternals.html
-  /usr/share/doc/dbus-0.61/api/group__DBusMacros.html
-  /usr/share/doc/dbus-0.61/api/group__DBusMarshal.html
-  /usr/share/doc/dbus-0.61/api/group__DBusMemPool.html
-  /usr/share/doc/dbus-0.61/api/group__DBusMemPoolInternals.html
-  /usr/share/doc/dbus-0.61/api/group__DBusMemory.html
-  /usr/share/doc/dbus-0.61/api/group__DBusMemoryInternals.html
-  /usr/share/doc/dbus-0.61/api/group__DBusMessage.html
-  /usr/share/doc/dbus-0.61/api/group__DBusMessageInternals.html
-  /usr/share/doc/dbus-0.61/api/group__DBusObjectTree.html
-  /usr/share/doc/dbus-0.61/api/group__DBusPendingCall.html
-  /usr/share/doc/dbus-0.61/api/group__DBusPendingCallInternals.html
-  /usr/share/doc/dbus-0.61/api/group__DBusProtocol.html
-  /usr/share/doc/dbus-0.61/api/group__DBusResources.html
-  /usr/share/doc/dbus-0.61/api/group__DBusResourcesInternals.html
-  /usr/share/doc/dbus-0.61/api/group__DBusSHA.html
-  /usr/share/doc/dbus-0.61/api/group__DBusSHAInternals.html
-  /usr/share/doc/dbus-0.61/api/group__DBusServer.html
-  /usr/share/doc/dbus-0.61/api/group__DBusServerInternals.html
-  /usr/share/doc/dbus-0.61/api/group__DBusServerUnix.html
-  /usr/share/doc/dbus-0.61/api/group__DBusShared.html
-  /usr/share/doc/dbus-0.61/api/group__DBusSignature.html
-  /usr/share/doc/dbus-0.61/api/group__DBusString.html
-  /usr/share/doc/dbus-0.61/api/group__DBusStringInternals.html
-  /usr/share/doc/dbus-0.61/api/group__DBusThreads.html
-  /usr/share/doc/dbus-0.61/api/group__DBusThreadsInternals.html
-  /usr/share/doc/dbus-0.61/api/group__DBusTimeout.html
-  /usr/share/doc/dbus-0.61/api/group__DBusTimeoutInternals.html
-  /usr/share/doc/dbus-0.61/api/group__DBusTransport.html
-  /usr/share/doc/dbus-0.61/api/group__DBusTransportUnix.html
-  /usr/share/doc/dbus-0.61/api/group__DBusTypes.html
-  /usr/share/doc/dbus-0.61/api/group__DBusWatch.html
-  /usr/share/doc/dbus-0.61/api/group__DBusWatchInternals.html
-  /usr/share/doc/dbus-0.61/api/hierarchy.html
-  /usr/share/doc/dbus-0.61/api/index.html
-  /usr/share/doc/dbus-0.61/api/lt-dbus-binding-tool_8c-source.html
-  /usr/share/doc/dbus-0.61/api/lt-example-client_8c-source.html
-  /usr/share/doc/dbus-0.61/api/lt-example-service_8c-source.html
-  /usr/share/doc/dbus-0.61/api/lt-example-signal-emitter_8c-source.html
-  /usr/share/doc/dbus-0.61/api/lt-example-signal-recipient_8c-source.html
-  /usr/share/doc/dbus-0.61/api/lt-statemachine-client_8c-source.html
-  /usr/share/doc/dbus-0.61/api/lt-statemachine-server_8c-source.html
-  /usr/share/doc/dbus-0.61/api/modules.html
-  /usr/share/doc/dbus-0.61/api/pages.html
-  /usr/share/doc/dbus-0.61/api/qdbus_8h-source.html
-  /usr/share/doc/dbus-0.61/api/sm-marshal_8c-source.html
-  /usr/share/doc/dbus-0.61/api/sm-marshal_8h-source.html
-  /usr/share/doc/dbus-0.61/api/statemachine-client_8c-source.html
-  /usr/share/doc/dbus-0.61/api/statemachine-glue_8h-source.html
-  /usr/share/doc/dbus-0.61/api/statemachine-server-glue_8h-source.html
-  /usr/share/doc/dbus-0.61/api/statemachine-server_8c-source.html
-  /usr/share/doc/dbus-0.61/api/statemachine-server_8h-source.html
-  /usr/share/doc/dbus-0.61/api/statemachine_8c-source.html
-  /usr/share/doc/dbus-0.61/api/statemachine_8h-source.html
-  /usr/share/doc/dbus-0.61/api/structBusData.html
-  /usr/share/doc/dbus-0.61/api/structClientState.html
-  /usr/share/doc/dbus-0.61/api/structConnectionSetup.html
-  /usr/share/doc/dbus-0.61/api/structDBusAddressEntry.html
-  /usr/share/doc/dbus-0.61/api/structDBusAllocatedSlot.html
-  /usr/share/doc/dbus-0.61/api/structDBusArrayLenFixup.html
-  /usr/share/doc/dbus-0.61/api/structDBusAtomic.html
-  /usr/share/doc/dbus-0.61/api/structDBusAuth.html
-  /usr/share/doc/dbus-0.61/api/structDBusAuthClient.html
-  /usr/share/doc/dbus-0.61/api/structDBusAuthCommandName.html
-  /usr/share/doc/dbus-0.61/api/structDBusAuthMechanismHandler.html
-  /usr/share/doc/dbus-0.61/api/structDBusAuthServer.html
-  /usr/share/doc/dbus-0.61/api/structDBusAuthStateData.html
-  /usr/share/doc/dbus-0.61/api/structDBusBabysitter.html
-  /usr/share/doc/dbus-0.61/api/structDBusBindingToolCData.html
-  /usr/share/doc/dbus-0.61/api/structDBusConnection.html
-  /usr/share/doc/dbus-0.61/api/structDBusCounter.html
-  /usr/share/doc/dbus-0.61/api/structDBusCredentials.html
-  /usr/share/doc/dbus-0.61/api/structDBusDataSlot.html
-  /usr/share/doc/dbus-0.61/api/structDBusDataSlotAllocator.html
-  /usr/share/doc/dbus-0.61/api/structDBusDataSlotList.html
-  /usr/share/doc/dbus-0.61/api/structDBusDirIter.html
-  /usr/share/doc/dbus-0.61/api/structDBusError.html
-  /usr/share/doc/dbus-0.61/api/structDBusFreedElement.html
-  /usr/share/doc/dbus-0.61/api/structDBusGAsyncData.html
-  /usr/share/doc/dbus-0.61/api/structDBusGErrorInfo.html
-  /usr/share/doc/dbus-0.61/api/structDBusGFuncSignature.html
-  /usr/share/doc/dbus-0.61/api/structDBusGHashTableValueForeachData.html
-  /usr/share/doc/dbus-0.61/api/structDBusGLibHashMarshalData.html
-  /usr/share/doc/dbus-0.61/api/structDBusGLibWriteInterfaceValues.html
-  /usr/share/doc/dbus-0.61/api/structDBusGLibWriteIterfaceData.html
-  /usr/share/doc/dbus-0.61/api/structDBusGMessageQueue.html
-  /usr/share/doc/dbus-0.61/api/structDBusGProxyList.html
-  /usr/share/doc/dbus-0.61/api/structDBusGProxyNameOwnerForeachData.html
-  /usr/share/doc/dbus-0.61/api/structDBusGProxyNameOwnerInfo.html
-  /usr/share/doc/dbus-0.61/api/structDBusGProxyUnassociateData.html
-  /usr/share/doc/dbus-0.61/api/structDBusGSignalClosure.html
-  /usr/share/doc/dbus-0.61/api/structDBusGTypeMarshalData.html
-  /usr/share/doc/dbus-0.61/api/structDBusGTypeMarshalVtable.html
-  /usr/share/doc/dbus-0.61/api/structDBusGTypeSpecializedAppendContext.html
-  /usr/share/doc/dbus-0.61/api/structDBusGTypeSpecializedAppendContextReal.html
-  /usr/share/doc/dbus-0.61/api/structDBusGTypeSpecializedCollectionVtable.html
-  /usr/share/doc/dbus-0.61/api/structDBusGTypeSpecializedContainer.html
-  /usr/share/doc/dbus-0.61/api/structDBusGTypeSpecializedData.html
-  /usr/share/doc/dbus-0.61/api/structDBusGTypeSpecializedMapVtable.html
-  /usr/share/doc/dbus-0.61/api/structDBusGTypeSpecializedStructVtable.html
-  /usr/share/doc/dbus-0.61/api/structDBusGTypeSpecializedVtable.html
-  /usr/share/doc/dbus-0.61/api/structDBusGValueCollectionMarshalData.html
-  /usr/share/doc/dbus-0.61/api/structDBusGValueMarshalCtx.html
-  /usr/share/doc/dbus-0.61/api/structDBusGroupInfo.html
-  /usr/share/doc/dbus-0.61/api/structDBusHashEntry.html
-  /usr/share/doc/dbus-0.61/api/structDBusHashIter.html
-  /usr/share/doc/dbus-0.61/api/structDBusHashTable.html
-  /usr/share/doc/dbus-0.61/api/structDBusHeader.html
-  /usr/share/doc/dbus-0.61/api/structDBusHeaderField.html
-  /usr/share/doc/dbus-0.61/api/structDBusKey.html
-  /usr/share/doc/dbus-0.61/api/structDBusKeyring.html
-  /usr/share/doc/dbus-0.61/api/structDBusList.html
-  /usr/share/doc/dbus-0.61/api/structDBusMemBlock.html
-  /usr/share/doc/dbus-0.61/api/structDBusMemPool.html
-  /usr/share/doc/dbus-0.61/api/structDBusMessage.html
-  /usr/share/doc/dbus-0.61/api/structDBusMessageFilter.html
-  /usr/share/doc/dbus-0.61/api/structDBusMessageIter.html
-  /usr/share/doc/dbus-0.61/api/structDBusMessageLoader.html
-  /usr/share/doc/dbus-0.61/api/structDBusMessageRealIter.html
-  /usr/share/doc/dbus-0.61/api/structDBusObjectPathVTable.html
-  /usr/share/doc/dbus-0.61/api/structDBusObjectSubtree.html
-  /usr/share/doc/dbus-0.61/api/structDBusObjectTree.html
-  /usr/share/doc/dbus-0.61/api/structDBusPendingCall.html
-  /usr/share/doc/dbus-0.61/api/structDBusPollFD.html
-  /usr/share/doc/dbus-0.61/api/structDBusPreallocatedSend.html
-  /usr/share/doc/dbus-0.61/api/structDBusRealError.html
-  /usr/share/doc/dbus-0.61/api/structDBusRealHashIter.html
-  /usr/share/doc/dbus-0.61/api/structDBusRealString.html
-  /usr/share/doc/dbus-0.61/api/structDBusSHAContext.html
-  /usr/share/doc/dbus-0.61/api/structDBusServer.html
-  /usr/share/doc/dbus-0.61/api/structDBusServerUnix.html
-  /usr/share/doc/dbus-0.61/api/structDBusServerVTable.html
-  /usr/share/doc/dbus-0.61/api/structDBusSignatureIter.html
-  /usr/share/doc/dbus-0.61/api/structDBusSignatureRealIter.html
-  /usr/share/doc/dbus-0.61/api/structDBusStat.html
-  /usr/share/doc/dbus-0.61/api/structDBusString.html
-  /usr/share/doc/dbus-0.61/api/structDBusThreadFunctions.html
-  /usr/share/doc/dbus-0.61/api/structDBusTimeout.html
-  /usr/share/doc/dbus-0.61/api/structDBusTimeoutList.html
-  /usr/share/doc/dbus-0.61/api/structDBusTransport.html
-  /usr/share/doc/dbus-0.61/api/structDBusTransportUnix.html
-  /usr/share/doc/dbus-0.61/api/structDBusTransportVTable.html
-  /usr/share/doc/dbus-0.61/api/structDBusTypeMark.html
-  /usr/share/doc/dbus-0.61/api/structDBusTypeReader.html
-  /usr/share/doc/dbus-0.61/api/structDBusTypeReaderClass.html
-  /usr/share/doc/dbus-0.61/api/structDBusTypeWriter.html
-  /usr/share/doc/dbus-0.61/api/structDBusUserInfo.html
-  /usr/share/doc/dbus-0.61/api/structDBusWatch.html
-  /usr/share/doc/dbus-0.61/api/structDBusWatchList.html
-  /usr/share/doc/dbus-0.61/api/structExpatParseContext.html
-  /usr/share/doc/dbus-0.61/api/structGPendingNotifyClosure.html
-  /usr/share/doc/dbus-0.61/api/structHeaderFieldType.html
-  /usr/share/doc/dbus-0.61/api/structIOHandler.html
-  /usr/share/doc/dbus-0.61/api/structMachineInfo.html
-  /usr/share/doc/dbus-0.61/api/structReplacementBlock.html
-  /usr/share/doc/dbus-0.61/api/structSMObject.html
-  /usr/share/doc/dbus-0.61/api/structSMObjectClass.html
-  /usr/share/doc/dbus-0.61/api/structSMServer.html
-  /usr/share/doc/dbus-0.61/api/structSMServerClass.html
-  /usr/share/doc/dbus-0.61/api/structShutdownClosure.html
-  /usr/share/doc/dbus-0.61/api/structSomeObject.html
-  /usr/share/doc/dbus-0.61/api/structSomeObjectClass.html
-  /usr/share/doc/dbus-0.61/api/structTestObject.html
-  /usr/share/doc/dbus-0.61/api/structTestObjectClass.html
-  /usr/share/doc/dbus-0.61/api/structTimeoutHandler.html
-  /usr/share/doc/dbus-0.61/api/struct__DBusGMethodInfo.html
-  /usr/share/doc/dbus-0.61/api/struct__DBusGMethodInvocation.html
-  /usr/share/doc/dbus-0.61/api/struct__DBusGObjectInfo.html
-  /usr/share/doc/dbus-0.61/api/struct__DBusGProxy.html
-  /usr/share/doc/dbus-0.61/api/struct__DBusGProxyClass.html
-  /usr/share/doc/dbus-0.61/api/struct__DBusGProxyManager.html
-  /usr/share/doc/dbus-0.61/api/struct__DBusGProxyPrivate.html
-  /usr/share/doc/dbus-0.61/api/tab_b.gif
-  /usr/share/doc/dbus-0.61/api/tab_l.gif
-  /usr/share/doc/dbus-0.61/api/tab_r.gif
-  /usr/share/doc/dbus-0.61/api/tabs.css
-  /usr/share/doc/dbus-0.61/api/todo.html
-  /usr/share/doc/dbus-0.61/api/unionDBusBasicValue.html
-  /usr/share/doc/dbus-0.61/api/unionDBusGUID.html
-  /usr/share/doc/dbus-0.61/html/dbus-faq.html
-  /usr/share/doc/dbus-0.61/html/dbus-specification.html
-  /usr/share/doc/dbus-0.61/html/dbus-test-plan.html
-  /usr/share/doc/dbus-0.61/html/dbus-tutorial.html
+  /usr/share/doc/dbus-0.62/api/annotated.html
+  /usr/share/doc/dbus-0.62/api/dbus-address_8c-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-address_8h-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-arch-deps_8h-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-auth-script_8c-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-auth-script_8h-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-auth-util_8c-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-auth_8c-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-auth_8h-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-binding-tool-glib_8c-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-binding-tool-glib_8h-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-bus_8c-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-bus_8h-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-connection-internal_8h-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-connection_8c-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-connection_8h-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-dataslot_8c-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-dataslot_8h-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-errors_8c-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-errors_8h-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-gidl_8c-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-gidl_8h-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-glib-error-enum_8h-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-glib-error-switch_8h-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-glib-lowlevel_8h-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-glib-tool_8c-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-glib-tool_8h-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-glib_8c-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-glib_8h-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-gloader-expat_8c-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-gmain_8c-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-gmarshal_8c-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-gmarshal_8h-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-gobject_8c-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-gobject_8h-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-gparser_8c-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-gparser_8h-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-gproxy_8c-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-gsignature_8c-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-gsignature_8h-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-gtest-main_8c-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-gtest_8c-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-gtest_8h-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-gthread_8c-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-gtype-specialized_8c-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-gtype-specialized_8h-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-gutils_8c-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-gutils_8h-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-gvalue-utils_8c-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-gvalue-utils_8h-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-gvalue_8c-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-gvalue_8h-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-hash_8c-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-hash_8h-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-internals_8c-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-internals_8h-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-keyring_8c-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-keyring_8h-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-list_8c-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-list_8h-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-macros_8h-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-mainloop_8c-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-mainloop_8h-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-marshal-basic_8c-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-marshal-basic_8h-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-marshal-byteswap-util_8c-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-marshal-byteswap_8c-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-marshal-byteswap_8h-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-marshal-header_8c-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-marshal-header_8h-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-marshal-recursive-util_8c-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-marshal-recursive_8c-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-marshal-recursive_8h-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-marshal-validate-util_8c-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-marshal-validate_8c-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-marshal-validate_8h-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-memory_8c-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-memory_8h-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-mempool_8c-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-mempool_8h-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-message-factory_8c-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-message-factory_8h-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-message-internal_8h-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-message-private_8h-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-message-util_8c-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-message_8c-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-message_8h-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-object-tree_8c-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-object-tree_8h-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-pending-call_8c-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-pending-call_8h-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-protocol_8h-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-resources_8c-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-resources_8h-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-server-debug-pipe_8c-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-server-debug-pipe_8h-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-server-protected_8h-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-server-unix_8c-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-server-unix_8h-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-server_8c-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-server_8h-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-sha_8c-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-sha_8h-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-shared_8h-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-shell_8c-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-shell_8h-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-signature_8c-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-signature_8h-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-spawn_8c-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-spawn_8h-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-string-private_8h-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-string-util_8c-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-string_8c-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-string_8h-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-sysdeps-util_8c-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-sysdeps_8c-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-sysdeps_8h-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-test-main_8c-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-test_8c-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-test_8h-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-threads-internal_8h-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-threads_8c-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-threads_8h-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-timeout_8c-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-timeout_8h-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-transport-protected_8h-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-transport-unix_8c-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-transport-unix_8h-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-transport_8c-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-transport_8h-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-types_8h-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-userdb-util_8c-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-userdb_8c-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-userdb_8h-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-watch_8c-source.html
+  /usr/share/doc/dbus-0.62/api/dbus-watch_8h-source.html
+  /usr/share/doc/dbus-0.62/api/dbus_8h-source.html
+  /usr/share/doc/dbus-0.62/api/deprecated.html
+  /usr/share/doc/dbus-0.62/api/doxygen.css
+  /usr/share/doc/dbus-0.62/api/doxygen.png
+  /usr/share/doc/dbus-0.62/api/example-client_8c-source.html
+  /usr/share/doc/dbus-0.62/api/example-service_8c-source.html
+  /usr/share/doc/dbus-0.62/api/example-signal-emitter_8c-source.html
+  /usr/share/doc/dbus-0.62/api/example-signal-recipient_8c-source.html
+  /usr/share/doc/dbus-0.62/api/files.html
+  /usr/share/doc/dbus-0.62/api/functions.html
+  /usr/share/doc/dbus-0.62/api/functions_0x62.html
+  /usr/share/doc/dbus-0.62/api/functions_0x63.html
+  /usr/share/doc/dbus-0.62/api/functions_0x64.html
+  /usr/share/doc/dbus-0.62/api/functions_0x65.html
+  /usr/share/doc/dbus-0.62/api/functions_0x66.html
+  /usr/share/doc/dbus-0.62/api/functions_0x67.html
+  /usr/share/doc/dbus-0.62/api/functions_0x68.html
+  /usr/share/doc/dbus-0.62/api/functions_0x69.html
+  /usr/share/doc/dbus-0.62/api/functions_0x6b.html
+  /usr/share/doc/dbus-0.62/api/functions_0x6c.html
+  /usr/share/doc/dbus-0.62/api/functions_0x6d.html
+  /usr/share/doc/dbus-0.62/api/functions_0x6e.html
+  /usr/share/doc/dbus-0.62/api/functions_0x6f.html
+  /usr/share/doc/dbus-0.62/api/functions_0x70.html
+  /usr/share/doc/dbus-0.62/api/functions_0x71.html
+  /usr/share/doc/dbus-0.62/api/functions_0x72.html
+  /usr/share/doc/dbus-0.62/api/functions_0x73.html
+  /usr/share/doc/dbus-0.62/api/functions_0x74.html
+  /usr/share/doc/dbus-0.62/api/functions_0x75.html
+  /usr/share/doc/dbus-0.62/api/functions_0x76.html
+  /usr/share/doc/dbus-0.62/api/functions_0x77.html
+  /usr/share/doc/dbus-0.62/api/functions_0x78.html
+  /usr/share/doc/dbus-0.62/api/functions_0x7a.html
+  /usr/share/doc/dbus-0.62/api/functions_vars.html
+  /usr/share/doc/dbus-0.62/api/functions_vars_0x62.html
+  /usr/share/doc/dbus-0.62/api/functions_vars_0x63.html
+  /usr/share/doc/dbus-0.62/api/functions_vars_0x64.html
+  /usr/share/doc/dbus-0.62/api/functions_vars_0x65.html
+  /usr/share/doc/dbus-0.62/api/functions_vars_0x66.html
+  /usr/share/doc/dbus-0.62/api/functions_vars_0x67.html
+  /usr/share/doc/dbus-0.62/api/functions_vars_0x68.html
+  /usr/share/doc/dbus-0.62/api/functions_vars_0x69.html
+  /usr/share/doc/dbus-0.62/api/functions_vars_0x6b.html
+  /usr/share/doc/dbus-0.62/api/functions_vars_0x6c.html
+  /usr/share/doc/dbus-0.62/api/functions_vars_0x6d.html
+  /usr/share/doc/dbus-0.62/api/functions_vars_0x6e.html
+  /usr/share/doc/dbus-0.62/api/functions_vars_0x6f.html
+  /usr/share/doc/dbus-0.62/api/functions_vars_0x70.html
+  /usr/share/doc/dbus-0.62/api/functions_vars_0x71.html
+  /usr/share/doc/dbus-0.62/api/functions_vars_0x72.html
+  /usr/share/doc/dbus-0.62/api/functions_vars_0x73.html
+  /usr/share/doc/dbus-0.62/api/functions_vars_0x74.html
+  /usr/share/doc/dbus-0.62/api/functions_vars_0x75.html
+  /usr/share/doc/dbus-0.62/api/functions_vars_0x76.html
+  /usr/share/doc/dbus-0.62/api/functions_vars_0x77.html
+  /usr/share/doc/dbus-0.62/api/functions_vars_0x78.html
+  /usr/share/doc/dbus-0.62/api/functions_vars_0x7a.html
+  /usr/share/doc/dbus-0.62/api/group__DBus.html
+  /usr/share/doc/dbus-0.62/api/group__DBusAddress.html
+  /usr/share/doc/dbus-0.62/api/group__DBusAddressInternals.html
+  /usr/share/doc/dbus-0.62/api/group__DBusAuth.html
+  /usr/share/doc/dbus-0.62/api/group__DBusAuthInternals.html
+  /usr/share/doc/dbus-0.62/api/group__DBusBus.html
+  /usr/share/doc/dbus-0.62/api/group__DBusBusInternals.html
+  /usr/share/doc/dbus-0.62/api/group__DBusConnection.html
+  /usr/share/doc/dbus-0.62/api/group__DBusConnectionInternals.html
+  /usr/share/doc/dbus-0.62/api/group__DBusDataSlot.html
+  /usr/share/doc/dbus-0.62/api/group__DBusErrorInternals.html
+  /usr/share/doc/dbus-0.62/api/group__DBusErrors.html
+  /usr/share/doc/dbus-0.62/api/group__DBusGLib.html
+  /usr/share/doc/dbus-0.62/api/group__DBusGLibInternals.html
+  /usr/share/doc/dbus-0.62/api/group__DBusHashTable.html
+  /usr/share/doc/dbus-0.62/api/group__DBusHashTableInternals.html
+  /usr/share/doc/dbus-0.62/api/group__DBusInternals.html
+  /usr/share/doc/dbus-0.62/api/group__DBusInternalsUtils.html
+  /usr/share/doc/dbus-0.62/api/group__DBusKeyring.html
+  /usr/share/doc/dbus-0.62/api/group__DBusKeyringInternals.html
+  /usr/share/doc/dbus-0.62/api/group__DBusList.html
+  /usr/share/doc/dbus-0.62/api/group__DBusListInternals.html
+  /usr/share/doc/dbus-0.62/api/group__DBusMacros.html
+  /usr/share/doc/dbus-0.62/api/group__DBusMarshal.html
+  /usr/share/doc/dbus-0.62/api/group__DBusMemPool.html
+  /usr/share/doc/dbus-0.62/api/group__DBusMemPoolInternals.html
+  /usr/share/doc/dbus-0.62/api/group__DBusMemory.html
+  /usr/share/doc/dbus-0.62/api/group__DBusMemoryInternals.html
+  /usr/share/doc/dbus-0.62/api/group__DBusMessage.html
+  /usr/share/doc/dbus-0.62/api/group__DBusMessageInternals.html
+  /usr/share/doc/dbus-0.62/api/group__DBusObjectTree.html
+  /usr/share/doc/dbus-0.62/api/group__DBusPendingCall.html
+  /usr/share/doc/dbus-0.62/api/group__DBusPendingCallInternals.html
+  /usr/share/doc/dbus-0.62/api/group__DBusProtocol.html
+  /usr/share/doc/dbus-0.62/api/group__DBusResources.html
+  /usr/share/doc/dbus-0.62/api/group__DBusResourcesInternals.html
+  /usr/share/doc/dbus-0.62/api/group__DBusSHA.html
+  /usr/share/doc/dbus-0.62/api/group__DBusSHAInternals.html
+  /usr/share/doc/dbus-0.62/api/group__DBusServer.html
+  /usr/share/doc/dbus-0.62/api/group__DBusServerInternals.html
+  /usr/share/doc/dbus-0.62/api/group__DBusServerUnix.html
+  /usr/share/doc/dbus-0.62/api/group__DBusShared.html
+  /usr/share/doc/dbus-0.62/api/group__DBusSignature.html
+  /usr/share/doc/dbus-0.62/api/group__DBusString.html
+  /usr/share/doc/dbus-0.62/api/group__DBusStringInternals.html
+  /usr/share/doc/dbus-0.62/api/group__DBusThreads.html
+  /usr/share/doc/dbus-0.62/api/group__DBusThreadsInternals.html
+  /usr/share/doc/dbus-0.62/api/group__DBusTimeout.html
+  /usr/share/doc/dbus-0.62/api/group__DBusTimeoutInternals.html
+  /usr/share/doc/dbus-0.62/api/group__DBusTransport.html
+  /usr/share/doc/dbus-0.62/api/group__DBusTransportUnix.html
+  /usr/share/doc/dbus-0.62/api/group__DBusTypes.html
+  /usr/share/doc/dbus-0.62/api/group__DBusWatch.html
+  /usr/share/doc/dbus-0.62/api/group__DBusWatchInternals.html
+  /usr/share/doc/dbus-0.62/api/hierarchy.html
+  /usr/share/doc/dbus-0.62/api/index.html
+  /usr/share/doc/dbus-0.62/api/modules.html
+  /usr/share/doc/dbus-0.62/api/pages.html
+  /usr/share/doc/dbus-0.62/api/sm-marshal_8c-source.html
+  /usr/share/doc/dbus-0.62/api/statemachine-client_8c-source.html
+  /usr/share/doc/dbus-0.62/api/statemachine-server_8c-source.html
+  /usr/share/doc/dbus-0.62/api/statemachine-server_8h-source.html
+  /usr/share/doc/dbus-0.62/api/statemachine_8c-source.html
+  /usr/share/doc/dbus-0.62/api/statemachine_8h-source.html
+  /usr/share/doc/dbus-0.62/api/structBusData.html
+  /usr/share/doc/dbus-0.62/api/structClientState.html
+  /usr/share/doc/dbus-0.62/api/structConnectionSetup.html
+  /usr/share/doc/dbus-0.62/api/structDBusAddressEntry.html
+  /usr/share/doc/dbus-0.62/api/structDBusAllocatedSlot.html
+  /usr/share/doc/dbus-0.62/api/structDBusArrayLenFixup.html
+  /usr/share/doc/dbus-0.62/api/structDBusAtomic.html
+  /usr/share/doc/dbus-0.62/api/structDBusAuth.html
+  /usr/share/doc/dbus-0.62/api/structDBusAuthClient.html
+  /usr/share/doc/dbus-0.62/api/structDBusAuthCommandName.html
+  /usr/share/doc/dbus-0.62/api/structDBusAuthMechanismHandler.html
+  /usr/share/doc/dbus-0.62/api/structDBusAuthServer.html
+  /usr/share/doc/dbus-0.62/api/structDBusAuthStateData.html
+  /usr/share/doc/dbus-0.62/api/structDBusBabysitter.html
+  /usr/share/doc/dbus-0.62/api/structDBusBindingToolCData.html
+  /usr/share/doc/dbus-0.62/api/structDBusConnection.html
+  /usr/share/doc/dbus-0.62/api/structDBusCounter.html
+  /usr/share/doc/dbus-0.62/api/structDBusCredentials.html
+  /usr/share/doc/dbus-0.62/api/structDBusDataSlot.html
+  /usr/share/doc/dbus-0.62/api/structDBusDataSlotAllocator.html
+  /usr/share/doc/dbus-0.62/api/structDBusDataSlotList.html
+  /usr/share/doc/dbus-0.62/api/structDBusDirIter.html
+  /usr/share/doc/dbus-0.62/api/structDBusError.html
+  /usr/share/doc/dbus-0.62/api/structDBusFreedElement.html
+  /usr/share/doc/dbus-0.62/api/structDBusGAsyncData.html
+  /usr/share/doc/dbus-0.62/api/structDBusGErrorInfo.html
+  /usr/share/doc/dbus-0.62/api/structDBusGFuncSignature.html
+  /usr/share/doc/dbus-0.62/api/structDBusGHashTableValueForeachData.html
+  /usr/share/doc/dbus-0.62/api/structDBusGLibHashMarshalData.html
+  /usr/share/doc/dbus-0.62/api/structDBusGLibWriteInterfaceValues.html
+  /usr/share/doc/dbus-0.62/api/structDBusGLibWriteIterfaceData.html
+  /usr/share/doc/dbus-0.62/api/structDBusGMessageQueue.html
+  /usr/share/doc/dbus-0.62/api/structDBusGProxyList.html
+  /usr/share/doc/dbus-0.62/api/structDBusGProxyNameOwnerForeachData.html
+  /usr/share/doc/dbus-0.62/api/structDBusGProxyNameOwnerInfo.html
+  /usr/share/doc/dbus-0.62/api/structDBusGProxyUnassociateData.html
+  /usr/share/doc/dbus-0.62/api/structDBusGSignalClosure.html
+  /usr/share/doc/dbus-0.62/api/structDBusGTypeMarshalData.html
+  /usr/share/doc/dbus-0.62/api/structDBusGTypeMarshalVtable.html
+  /usr/share/doc/dbus-0.62/api/structDBusGTypeSpecializedAppendContext.html
+  /usr/share/doc/dbus-0.62/api/structDBusGTypeSpecializedAppendContextReal.html
+  /usr/share/doc/dbus-0.62/api/structDBusGTypeSpecializedCollectionVtable.html
+  /usr/share/doc/dbus-0.62/api/structDBusGTypeSpecializedContainer.html
+  /usr/share/doc/dbus-0.62/api/structDBusGTypeSpecializedData.html
+  /usr/share/doc/dbus-0.62/api/structDBusGTypeSpecializedMapVtable.html
+  /usr/share/doc/dbus-0.62/api/structDBusGTypeSpecializedStructVtable.html
+  /usr/share/doc/dbus-0.62/api/structDBusGTypeSpecializedVtable.html
+  /usr/share/doc/dbus-0.62/api/structDBusGValueCollectionMarshalData.html
+  /usr/share/doc/dbus-0.62/api/structDBusGValueMarshalCtx.html
+  /usr/share/doc/dbus-0.62/api/structDBusGroupInfo.html
+  /usr/share/doc/dbus-0.62/api/structDBusHashEntry.html
+  /usr/share/doc/dbus-0.62/api/structDBusHashIter.html
+  /usr/share/doc/dbus-0.62/api/structDBusHashTable.html
+  /usr/share/doc/dbus-0.62/api/structDBusHeader.html
+  /usr/share/doc/dbus-0.62/api/structDBusHeaderField.html
+  /usr/share/doc/dbus-0.62/api/structDBusKey.html
+  /usr/share/doc/dbus-0.62/api/structDBusKeyring.html
+  /usr/share/doc/dbus-0.62/api/structDBusList.html
+  /usr/share/doc/dbus-0.62/api/structDBusMemBlock.html
+  /usr/share/doc/dbus-0.62/api/structDBusMemPool.html
+  /usr/share/doc/dbus-0.62/api/structDBusMessage.html
+  /usr/share/doc/dbus-0.62/api/structDBusMessageFilter.html
+  /usr/share/doc/dbus-0.62/api/structDBusMessageIter.html
+  /usr/share/doc/dbus-0.62/api/structDBusMessageLoader.html
+  /usr/share/doc/dbus-0.62/api/structDBusMessageRealIter.html
+  /usr/share/doc/dbus-0.62/api/structDBusObjectPathVTable.html
+  /usr/share/doc/dbus-0.62/api/structDBusObjectSubtree.html
+  /usr/share/doc/dbus-0.62/api/structDBusObjectTree.html
+  /usr/share/doc/dbus-0.62/api/structDBusPendingCall.html
+  /usr/share/doc/dbus-0.62/api/structDBusPollFD.html
+  /usr/share/doc/dbus-0.62/api/structDBusPreallocatedSend.html
+  /usr/share/doc/dbus-0.62/api/structDBusRealError.html
+  /usr/share/doc/dbus-0.62/api/structDBusRealHashIter.html
+  /usr/share/doc/dbus-0.62/api/structDBusRealString.html
+  /usr/share/doc/dbus-0.62/api/structDBusSHAContext.html
+  /usr/share/doc/dbus-0.62/api/structDBusServer.html
+  /usr/share/doc/dbus-0.62/api/structDBusServerUnix.html
+  /usr/share/doc/dbus-0.62/api/structDBusServerVTable.html
+  /usr/share/doc/dbus-0.62/api/structDBusSignatureIter.html
+  /usr/share/doc/dbus-0.62/api/structDBusSignatureRealIter.html
+  /usr/share/doc/dbus-0.62/api/structDBusStat.html
+  /usr/share/doc/dbus-0.62/api/structDBusString.html
+  /usr/share/doc/dbus-0.62/api/structDBusThreadFunctions.html
+  /usr/share/doc/dbus-0.62/api/structDBusTimeout.html
+  /usr/share/doc/dbus-0.62/api/structDBusTimeoutList.html
+  /usr/share/doc/dbus-0.62/api/structDBusTransport.html
+  /usr/share/doc/dbus-0.62/api/structDBusTransportUnix.html
+  /usr/share/doc/dbus-0.62/api/structDBusTransportVTable.html
+  /usr/share/doc/dbus-0.62/api/structDBusTypeMark.html
+  /usr/share/doc/dbus-0.62/api/structDBusTypeReader.html
+  /usr/share/doc/dbus-0.62/api/structDBusTypeReaderClass.html
+  /usr/share/doc/dbus-0.62/api/structDBusTypeWriter.html
+  /usr/share/doc/dbus-0.62/api/structDBusUserInfo.html
+  /usr/share/doc/dbus-0.62/api/structDBusWatch.html
+  /usr/share/doc/dbus-0.62/api/structDBusWatchList.html
+  /usr/share/doc/dbus-0.62/api/structExpatParseContext.html
+  /usr/share/doc/dbus-0.62/api/structGPendingNotifyClosure.html
+  /usr/share/doc/dbus-0.62/api/structHeaderFieldType.html
+  /usr/share/doc/dbus-0.62/api/structIOHandler.html
+  /usr/share/doc/dbus-0.62/api/structMachineInfo.html
+  /usr/share/doc/dbus-0.62/api/structReplacementBlock.html
+  /usr/share/doc/dbus-0.62/api/structSMObject.html
+  /usr/share/doc/dbus-0.62/api/structSMObjectClass.html
+  /usr/share/doc/dbus-0.62/api/structSMServer.html
+  /usr/share/doc/dbus-0.62/api/structSMServerClass.html
+  /usr/share/doc/dbus-0.62/api/structShutdownClosure.html
+  /usr/share/doc/dbus-0.62/api/structSomeObject.html
+  /usr/share/doc/dbus-0.62/api/structSomeObjectClass.html
+  /usr/share/doc/dbus-0.62/api/structTestObject.html
+  /usr/share/doc/dbus-0.62/api/structTestObjectClass.html
+  /usr/share/doc/dbus-0.62/api/structTimeoutHandler.html
+  /usr/share/doc/dbus-0.62/api/struct__DBusGMethodInfo.html
+  /usr/share/doc/dbus-0.62/api/struct__DBusGMethodInvocation.html
+  /usr/share/doc/dbus-0.62/api/struct__DBusGObjectInfo.html
+  /usr/share/doc/dbus-0.62/api/struct__DBusGProxy.html
+  /usr/share/doc/dbus-0.62/api/struct__DBusGProxyClass.html
+  /usr/share/doc/dbus-0.62/api/struct__DBusGProxyManager.html
+  /usr/share/doc/dbus-0.62/api/struct__DBusGProxyPrivate.html
+  /usr/share/doc/dbus-0.62/api/tab_b.gif
+  /usr/share/doc/dbus-0.62/api/tab_l.gif
+  /usr/share/doc/dbus-0.62/api/tab_r.gif
+  /usr/share/doc/dbus-0.62/api/tabs.css
+  /usr/share/doc/dbus-0.62/api/todo.html
+  /usr/share/doc/dbus-0.62/api/unionDBusBasicValue.html
+  /usr/share/doc/dbus-0.62/api/unionDBusGUID.html
 
 ------------------
 
 Port Notes:
+
+----- version 0.62-1 -----
+Version bump.  dbus-sharp mono bindings now included.
 
 ----- version 0.61-2 -----
 Fixed packaging errors.

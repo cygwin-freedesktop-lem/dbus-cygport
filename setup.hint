@@ -1,6 +1,6 @@
 category: System
-requires: cygwin libdbus1_2 libxml2 libX11_6
-sdesc: "Freedesktop message bus system (daemon and core utilities)"
+requires: cygwin expat libdbus1_3 libX11_6
+sdesc: "Freedesktop message bus system (daemon and clients)"
 ldesc: "D-BUS is a message bus system, a simple way for applications to talk
 to one another.
 

@@ -72,6 +72,7 @@ Files included in the binary package:
   /usr/bin/dbus-launch.exe
   /usr/bin/dbus-monitor.exe
   /usr/bin/dbus-send.exe
+  /usr/bin/dbus-uuidgen.exe
   /usr/share/doc/Cygwin/dbus-0.93.README
   /usr/share/doc/dbus-0.93/AUTHORS
   /usr/share/doc/dbus-0.93/COPYING
@@ -86,6 +87,7 @@ Files included in the binary package:
   /usr/share/man/man1/dbus-launch.1.gz
   /usr/share/man/man1/dbus-monitor.1.gz
   /usr/share/man/man1/dbus-send.1.gz
+  /usr/share/man/man1/dbus-uuidgen.1.gz
 
 Files included in the runtime library packages:
 
@@ -409,6 +411,9 @@ Files included in the doc package:
 ------------------
 
 Port Notes:
+
+----- version 0.94-1 -----
+RC2 version bump.
 
 ----- version 0.93-1 -----
 RC1 version bump.

@@ -1,5 +1,6 @@
 category: System
-requires: cygwin dbus
+requires: cygwin libgetaddrinfo0
+external-source: dbus
 sdesc: "Freedesktop message bus system (runtime library)"
 ldesc: "D-BUS is a message bus system, a simple way for applications to talk
 to one another.

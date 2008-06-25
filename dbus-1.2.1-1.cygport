@@ -1,0 +1,35 @@
+DESCRIPTION="D-BUS application message bus"
+HOMEPAGE="http://www.freedesktop.org/wiki/Software/dbus"
+SRC_URI="http://dbus.freedesktop.org/releases/${PN}/${P}.tar.gz"
+
+abi=3
+PKG_NAMES="${PN} lib${PN}1_${abi} lib${PN}1-devel"
+PKG_HINTS='setup lib devel'
+PKG_CONTENTS[0]="etc/ usr/bin/*.exe usr/sbin/ usr/share/ var/"
+PKG_CONTENTS[1]="usr/bin/*-${abi}.dll"
+PKG_CONTENTS[2]='usr/include/ usr/lib'
+
+DIFF_EXCLUDES="debug-*.conf org.*.service dbus-daemon.1"
+
+LIBS+=" -lgetaddrinfo"
+CYGCONF_ARGS="
+	--disable-static
+	--with-x
+	--with-xml=expat
+	--enable-verbose-mode --enable-checks --enable-asserts
+	--with-system-pid-file=/var/run/dbus.pid
+	--with-system-socket=/var/lib/dbus/system_bus_socket
+	--with-session-socket-dir=/tmp
+"
+
+DOCS="doc/TODO"
+HTMLDOCS="doc/*.html"
+
+KEEPDIRS="
+	/usr/share/dbus-1/services
+	/usr/share/dbus-1/system-services
+	/etc/dbus-1/session.d
+	/etc/dbus-1/system.d
+	/var/lib/dbus
+	/var/run/dbus
+"

@@ -44,17 +44,17 @@ Canonical download:
 -------------------------------------------
 
 Build instructions:
-  unpack dbus-1.2.1-X-src.tar.bz2
+  unpack dbus-1.2.3-X-src.tar.bz2
     if you use setup to install this src package, it will be
 	 unpacked under /usr/src automatically
   cd /usr/src
-  cygport ./dbus-1.2.1-X.cygport all
+  cygport ./dbus-1.2.3-X.cygport all
 
 This will create:
-  /usr/src/dbus-1.2.1-X-src.tar.bz2
-  /usr/src/dbus-1.2.1-X.tar.bz2
-  /usr/src/libdbus1-devel-1.2.1-X.tar.bz2
-  /usr/src/libdbus1_3-1.2.1-X.tar.bz2
+  /usr/src/dbus-1.2.3-X-src.tar.bz2
+  /usr/src/dbus-1.2.3-X.tar.bz2
+  /usr/src/libdbus1-devel-1.2.3-X.tar.bz2
+  /usr/src/libdbus1_3-1.2.3-X.tar.bz2
 
 -------------------------------------------
 
@@ -75,18 +75,18 @@ Files included in the binary package:
   /usr/sbin/dbus-daemon-launch-helper.exe
   /usr/share/dbus-1/services/.keep-dbus
   /usr/share/dbus-1/system-services/.keep-dbus
-  /usr/share/doc/dbus-1.2.1/AUTHORS
-  /usr/share/doc/dbus-1.2.1/COPYING
-  /usr/share/doc/dbus-1.2.1/ChangeLog
-  /usr/share/doc/dbus-1.2.1/HACKING
-  /usr/share/doc/dbus-1.2.1/INSTALL
-  /usr/share/doc/dbus-1.2.1/NEWS
-  /usr/share/doc/dbus-1.2.1/README
-  /usr/share/doc/dbus-1.2.1/TODO
-  /usr/share/doc/dbus-1.2.1/html/dbus-faq.html
-  /usr/share/doc/dbus-1.2.1/html/dbus-specification.html
-  /usr/share/doc/dbus-1.2.1/html/dbus-test-plan.html
-  /usr/share/doc/dbus-1.2.1/html/dbus-tutorial.html
+  /usr/share/doc/dbus-1.2.3/AUTHORS
+  /usr/share/doc/dbus-1.2.3/COPYING
+  /usr/share/doc/dbus-1.2.3/ChangeLog
+  /usr/share/doc/dbus-1.2.3/HACKING
+  /usr/share/doc/dbus-1.2.3/INSTALL
+  /usr/share/doc/dbus-1.2.3/NEWS
+  /usr/share/doc/dbus-1.2.3/README
+  /usr/share/doc/dbus-1.2.3/TODO
+  /usr/share/doc/dbus-1.2.3/html/dbus-faq.html
+  /usr/share/doc/dbus-1.2.3/html/dbus-specification.html
+  /usr/share/doc/dbus-1.2.3/html/dbus-test-plan.html
+  /usr/share/doc/dbus-1.2.3/html/dbus-tutorial.html
   /usr/share/man/man1/dbus-cleanup-sockets.1.gz
   /usr/share/man/man1/dbus-daemon.1.gz
   /usr/share/man/man1/dbus-launch.1.gz
@@ -124,6 +124,9 @@ Files included in the binary package:
 ------------------
 
 Port Notes:
+
+----- version 1.2.3-1 -----
+Version bump.
 
 ----- version 1.2.1-1 -----
 Version bump.

@@ -1,0 +1,11 @@
+--- origsrc/dbus-1.2.1/configure.in	2008-04-04 13:23:23.000000000 -0500
++++ src/dbus-1.2.1/configure.in	2008-06-22 11:04:32.765625000 -0500
+@@ -135,7 +135,7 @@
+   AC_MSG_CHECKING(whether $CC supports "$@")
+   Cfile=/tmp/foo${$}
+   touch ${Cfile}.c
+-  $CC -c "$@" ${Cfile}.c -o ${Cfile}.o >/dev/null 2>&1
++  $CC -c -Werror "$@" ${Cfile}.c -o ${Cfile}.o >/dev/null 2>&1
+   rc=$?
+   rm -f ${Cfile}.c ${Cfile}.o
+   case $rc in

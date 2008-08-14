@@ -1,0 +1,13 @@
+--- origsrc/dbus-1.2.1/dbus/dbus-sysdeps-unix.c	2008-04-04 10:24:08.000000000 -0500
++++ src/dbus-1.2.1/dbus/dbus-sysdeps-unix.c	2008-06-22 11:29:32.281250000 -0500
+@@ -70,6 +70,10 @@
+ #ifdef HAVE_GETPEERUCRED
+ #include <ucred.h>
+ #endif
++#ifdef __CYGWIN__
++#include <dummyin6.h>
++#include <getaddrinfo.h>
++#endif
+ 
+ #ifndef O_BINARY
+ #define O_BINARY 0

@@ -1,6 +1,12 @@
 DESCRIPTION="D-BUS application message bus"
 HOMEPAGE="http://www.freedesktop.org/wiki/Software/dbus"
 SRC_URI="http://dbus.freedesktop.org/releases/${PN}/${P}.tar.gz"
+PATCH_URI="
+	1.2.1-cflags-check.patch
+	1.2.1-install.patch
+	1.2.1-ipv6.patch
+	1.2.1-tests.patch
+"
 
 abi=3
 PKG_NAMES="${PN} lib${PN}1_${abi} lib${PN}1-devel"
@@ -9,7 +15,7 @@ PKG_CONTENTS[0]="etc/ usr/bin/*.exe usr/sbin/ usr/share/ var/"
 PKG_CONTENTS[1]="usr/bin/*-${abi}.dll"
 PKG_CONTENTS[2]='usr/include/ usr/lib'
 
-DIFF_EXCLUDES="debug-*.conf org.*.service dbus-daemon.1"
+DIFF_EXCLUDES="debug-*.conf org.*.service dbus-daemon.1 dbus-arch-deps.h"
 
 LIBS+=" -lgetaddrinfo"
 CYGCONF_ARGS="

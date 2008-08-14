@@ -22,38 +22,3 @@
  	else \
  		echo "Not installing $(DESTDIR)$(libexecdir)/dbus-daemon-launch-helper binary setuid!"; \
  		echo "You'll need to manually set permissions to root:$(DBUS_USER) and permissions 4750"; \
---- origsrc/dbus-1.2.1/configure.in	2008-04-04 13:23:23.000000000 -0500
-+++ src/dbus-1.2.1/configure.in	2008-06-22 11:04:32.765625000 -0500
-@@ -135,7 +135,7 @@
-   AC_MSG_CHECKING(whether $CC supports "$@")
-   Cfile=/tmp/foo${$}
-   touch ${Cfile}.c
--  $CC -c "$@" ${Cfile}.c -o ${Cfile}.o >/dev/null 2>&1
-+  $CC -c -Werror "$@" ${Cfile}.c -o ${Cfile}.o >/dev/null 2>&1
-   rc=$?
-   rm -f ${Cfile}.c ${Cfile}.o
-   case $rc in
---- origsrc/dbus-1.2.1/dbus/dbus-sysdeps-unix.c	2008-04-04 10:24:08.000000000 -0500
-+++ src/dbus-1.2.1/dbus/dbus-sysdeps-unix.c	2008-06-22 11:29:32.281250000 -0500
-@@ -70,6 +70,10 @@
- #ifdef HAVE_GETPEERUCRED
- #include <ucred.h>
- #endif
-+#ifdef __CYGWIN__
-+#include <dummyin6.h>
-+#include <getaddrinfo.h>
-+#endif
- 
- #ifndef O_BINARY
- #define O_BINARY 0
---- origsrc/dbus-1.2.1/test/Makefile.am	2008-04-04 10:24:08.000000000 -0500
-+++ src/dbus-1.2.1/test/Makefile.am	2008-06-22 11:39:37.750000000 -0500
-@@ -107,7 +107,7 @@
- 	data/equiv-config-files/entities/basic.d
- 
- 
--FIND_TESTS=find . -name "*.message" -o -name "*.message-raw" -o -name "*.auth-script" -o -name "*.sha1" -o -name "*.txt" -o -name "*.conf" -o -name "*.service"
-+FIND_TESTS=find . -type f -a \( -name "*.message" -o -name "*.message-raw" -o -name "*.auth-script" -o -name "*.sha1" -o -name "*.txt" -o -name "*.conf" -o -name "*.service" \)
- 
- dist-hook:
- 	for D in $(TESTDIRS); do						\

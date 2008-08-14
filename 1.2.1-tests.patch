@@ -1,0 +1,11 @@
+--- origsrc/dbus-1.2.1/test/Makefile.am	2008-04-04 10:24:08.000000000 -0500
++++ src/dbus-1.2.1/test/Makefile.am	2008-06-22 11:39:37.750000000 -0500
+@@ -107,7 +107,7 @@
+ 	data/equiv-config-files/entities/basic.d
+ 
+ 
+-FIND_TESTS=find . -name "*.message" -o -name "*.message-raw" -o -name "*.auth-script" -o -name "*.sha1" -o -name "*.txt" -o -name "*.conf" -o -name "*.service"
++FIND_TESTS=find . -type f -a \( -name "*.message" -o -name "*.message-raw" -o -name "*.auth-script" -o -name "*.sha1" -o -name "*.txt" -o -name "*.conf" -o -name "*.service" \)
+ 
+ dist-hook:
+ 	for D in $(TESTDIRS); do						\

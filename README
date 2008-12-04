@@ -12,8 +12,8 @@ framework, which can be used by any two apps to communicate directly
 
 USER NOTES:
 
-The easiest way to start the session bus is to run 'dbus-launch 
---sh-syntax', then execute the bash syntax which is given to stdout.
+The easiest way to start the session bus is to run:
+eval `dbus-launch --sh-syntax`
 
 Runtime requirements:
   cygwin-1.5.25-15
@@ -23,14 +23,14 @@ Runtime requirements:
 
 Build requirements:
 (besides corresponding -devel packages)
-  autoconf2.5-2.61-1
-  automake1.10-1.10.1-1
-  binutils-20080523-1
-  cygport-0.3.12-1
+  autoconf2.5-2.63-1
+  automake1.10-1.10.1-2
+  binutils-20080624-2
+  cygport-0.4.2-1
   gawk-3.1.6-1
   gcc-core-3.4.4-3
   gcc-g++-3.4.4-3
-  libtool-2.2.2-2
+  libtool-2.2.6a-1
   make-3.81-1
   pkg-config-0.23a-2
   sed-4.1.5-2
@@ -44,17 +44,17 @@ Canonical download:
 -------------------------------------------
 
 Build instructions:
-  unpack dbus-1.2.3-X-src.tar.bz2
+  unpack dbus-1.2.4-X-src.tar.bz2
     if you use setup to install this src package, it will be
 	 unpacked under /usr/src automatically
   cd /usr/src
-  cygport ./dbus-1.2.3-X.cygport all
+  cygport ./dbus-1.2.4-X.cygport all
 
 This will create:
-  /usr/src/dbus-1.2.3-X-src.tar.bz2
-  /usr/src/dbus-1.2.3-X.tar.bz2
-  /usr/src/libdbus1-devel-1.2.3-X.tar.bz2
-  /usr/src/libdbus1_3-1.2.3-X.tar.bz2
+  /usr/src/dbus-1.2.4-X-src.tar.bz2
+  /usr/src/dbus-1.2.4-X.tar.bz2
+  /usr/src/libdbus1-devel-1.2.4-X.tar.bz2
+  /usr/src/libdbus1_3-1.2.4-X.tar.bz2
 
 -------------------------------------------
 
@@ -72,21 +72,21 @@ Files included in the binary package:
   /usr/bin/dbus-monitor.exe
   /usr/bin/dbus-send.exe
   /usr/bin/dbus-uuidgen.exe
-  /usr/sbin/dbus-daemon-launch-helper.exe
+  /usr/lib/dbus-1.0/dbus-daemon-launch-helper.exe
   /usr/share/dbus-1/services/.keep-dbus
   /usr/share/dbus-1/system-services/.keep-dbus
-  /usr/share/doc/dbus-1.2.3/AUTHORS
-  /usr/share/doc/dbus-1.2.3/COPYING
-  /usr/share/doc/dbus-1.2.3/ChangeLog
-  /usr/share/doc/dbus-1.2.3/HACKING
-  /usr/share/doc/dbus-1.2.3/INSTALL
-  /usr/share/doc/dbus-1.2.3/NEWS
-  /usr/share/doc/dbus-1.2.3/README
-  /usr/share/doc/dbus-1.2.3/TODO
-  /usr/share/doc/dbus-1.2.3/html/dbus-faq.html
-  /usr/share/doc/dbus-1.2.3/html/dbus-specification.html
-  /usr/share/doc/dbus-1.2.3/html/dbus-test-plan.html
-  /usr/share/doc/dbus-1.2.3/html/dbus-tutorial.html
+  /usr/share/doc/dbus-1.2.4/AUTHORS
+  /usr/share/doc/dbus-1.2.4/COPYING
+  /usr/share/doc/dbus-1.2.4/ChangeLog
+  /usr/share/doc/dbus-1.2.4/HACKING
+  /usr/share/doc/dbus-1.2.4/INSTALL
+  /usr/share/doc/dbus-1.2.4/NEWS
+  /usr/share/doc/dbus-1.2.4/README
+  /usr/share/doc/dbus-1.2.4/TODO
+  /usr/share/doc/dbus-1.2.4/html/dbus-faq.html
+  /usr/share/doc/dbus-1.2.4/html/dbus-specification.html
+  /usr/share/doc/dbus-1.2.4/html/dbus-test-plan.html
+  /usr/share/doc/dbus-1.2.4/html/dbus-tutorial.html
   /usr/share/man/man1/dbus-cleanup-sockets.1.gz
   /usr/share/man/man1/dbus-daemon.1.gz
   /usr/share/man/man1/dbus-launch.1.gz
@@ -117,6 +117,7 @@ Files included in the binary package:
   /usr/include/dbus-1.0/dbus/dbus-types.h
   /usr/include/dbus-1.0/dbus/dbus.h
   /usr/lib/dbus-1.0/include/dbus/dbus-arch-deps.h
+  /usr/lib/libdbus-1.a
   /usr/lib/libdbus-1.dll.a
   /usr/lib/libdbus-1.la
   /usr/lib/pkgconfig/dbus-1.pc
@@ -124,6 +125,9 @@ Files included in the binary package:
 ------------------
 
 Port Notes:
+
+----- version 1.2.4-1 -----
+Version bump.
 
 ----- version 1.2.3-1 -----
 Version bump.

@@ -10,19 +10,17 @@ PATCH_URI="
 
 abi=3
 PKG_NAMES="${PN} lib${PN}1_${abi} lib${PN}1-devel"
-PKG_HINTS='setup lib devel'
-PKG_CONTENTS[0]="etc/ usr/bin/*.exe usr/sbin/ usr/share/ var/"
-PKG_CONTENTS[1]="usr/bin/*-${abi}.dll"
-PKG_CONTENTS[2]='usr/include/ usr/lib'
+dbus_CONTENTS="etc/ usr/bin/*.exe usr/lib/dbus-1.0/*.exe usr/share/ var/"
+libdbus1_3_CONTENTS="usr/bin/cygdbus-1-3.dll"
+libdbus1_devel_CONTENTS='--exclude=*.exe usr/include/ usr/lib/'
 
 DIFF_EXCLUDES="debug-*.conf org.*.service dbus-daemon.1 dbus-arch-deps.h"
 
 LIBS+=" -lgetaddrinfo"
 CYGCONF_ARGS="
-	--disable-static
+	--libexecdir=/usr/lib/dbus-1.0
 	--with-x
 	--with-xml=expat
-	--enable-verbose-mode --enable-checks --enable-asserts
 	--with-system-pid-file=/var/run/dbus.pid
 	--with-system-socket=/var/lib/dbus/system_bus_socket
 	--with-session-socket-dir=/tmp

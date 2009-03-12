@@ -14,23 +14,22 @@ USER NOTES: (CHANGED!!!)
 Use messagebus-config to install the D-Bus system service.
 
 Runtime requirements:
-  cygwin-1.5.25-15
+  cygwin-1.7.0-43
   libexpat1-2.0.1-1
-  libgetaddrinfo0-1.6.3-3
   libX11_6-1.1.5-2
   csih
 
 Build requirements:
 (besides corresponding -devel packages)
-  autoconf2.5-2.63-1
-  automake1.10-1.10.1-2
+  autoconf2.5-2.63-10
+  automake1.10-1.10.1-10
   binutils-20080624-2
-  cygport-0.4.3-1
-  gawk-3.1.6-1
-  gcc-core-3.4.4-3
-  gcc-g++-3.4.4-3
-  libtool-2.2.6a-1
-  make-3.81-1
+  cygport-0.9.5-1
+  gawk-3.1.6-2
+  gcc-core-3.4.4-999
+  gcc-g++-3.4.4-999
+  libtool-2.2.7a-10
+  make-3.81-2
   pkg-config-0.23a-2
   sed-4.1.5-2
 
@@ -124,58 +123,8 @@ Files included in the binary package:
 
 Port Notes:
 
------ version 1.2.12-1 -----
-Version bump.
-Added messagebus-config script for installing the system service.
-
------ version 1.2.4-1 -----
-Version bump.
-
------ version 1.2.3-1 -----
-Version bump.
-
------ version 1.2.1-1 -----
-Version bump.
-
------ version 1.0.2-1 -----
-Stable version bump.
-Documentation now includes dot inheritance graphs.
-
------ version 0.94-1 -----
-RC2 version bump.
-
------ version 0.93-1 -----
-RC1 version bump.
-
------ version 0.91-1 -----
-ABI version bump, now stable for 1.0.
-All language bindings are now packaged separately upstream.
-
------ version 0.62-1 -----
-Version bump.  dbus-sharp mono bindings now included.
-
------ version 0.61-2 -----
-Fixed packaging errors.
-
------ version 0.61-1 -----
-Version bump.
-General and Doxygen HTML documentation now provided in dbus-doc package.
-
------ version 0.60-1 -----
-Version and (for libdbus and libdbus-glib) ABI bump.
-
------ version 0.50-2 -----
-Changed packaging layout to allow for API instability.
-
------ version 0.50-1 -----
-Version bump.
-
------ version 0.36.1-2 -----
-Fixes packaging problems.
-
------ version 0.36.1-1 -----
-Initial release for Cygwin.
-Includes the core, gcj, glib, python, and qt interfaces.
+----- version 1.2.12-10 -----
+Rebuilt for cygwin-1.7.
 
 
 Cygwin port maintained by:

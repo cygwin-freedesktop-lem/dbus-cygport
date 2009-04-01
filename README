@@ -10,13 +10,13 @@ message bus is built on top of a general one-to-one message passing
 framework, which can be used by any two apps to communicate directly
 (without going through the message bus daemon). 
 
-USER NOTES: (CHANGED!!!)
+USER NOTES:
 Use messagebus-config to install the D-Bus system service.
 
 Runtime requirements:
-  cygwin-1.7.0-43
+  cygwin-1.7.0-44
   libexpat1-2.0.1-1
-  libX11_6-1.1.5-2
+  libX11_6-1.2-10
   csih
 
 Build requirements:
@@ -24,11 +24,11 @@ Build requirements:
   autoconf2.5-2.63-10
   automake1.10-1.10.1-10
   binutils-20080624-2
-  cygport-0.9.5-1
+  cygport-0.9.6-1
   gawk-3.1.6-2
-  gcc-core-3.4.4-999
-  gcc-g++-3.4.4-999
-  libtool-2.2.7a-10
+  gcc4-core-4.3.2-2
+  gcc4-g++-4.3.2-2
+  libtool-2.2.7a-11
   make-3.81-2
   pkg-config-0.23a-2
   sed-4.1.5-2
@@ -75,17 +75,16 @@ Files included in the binary package:
   /usr/lib/dbus-1.0/dbus-daemon-launch-helper.exe
   /usr/share/dbus-1/services/.keep-dbus
   /usr/share/dbus-1/system-services/.keep-dbus
-  /usr/share/doc/dbus-1.2.12/AUTHORS
-  /usr/share/doc/dbus-1.2.12/COPYING
-  /usr/share/doc/dbus-1.2.12/ChangeLog
-  /usr/share/doc/dbus-1.2.12/HACKING
-  /usr/share/doc/dbus-1.2.12/INSTALL
-  /usr/share/doc/dbus-1.2.12/README
-  /usr/share/doc/dbus-1.2.12/TODO
-  /usr/share/doc/dbus-1.2.12/html/dbus-faq.html
-  /usr/share/doc/dbus-1.2.12/html/dbus-specification.html
-  /usr/share/doc/dbus-1.2.12/html/dbus-test-plan.html
-  /usr/share/doc/dbus-1.2.12/html/dbus-tutorial.html
+  /usr/share/doc/dbus/AUTHORS
+  /usr/share/doc/dbus/COPYING
+  /usr/share/doc/dbus/ChangeLog
+  /usr/share/doc/dbus/HACKING
+  /usr/share/doc/dbus/README
+  /usr/share/doc/dbus/TODO
+  /usr/share/doc/dbus/html/dbus-faq.html
+  /usr/share/doc/dbus/html/dbus-specification.html
+  /usr/share/doc/dbus/html/dbus-test-plan.html
+  /usr/share/doc/dbus/html/dbus-tutorial.html
   /usr/share/man/man1/dbus-cleanup-sockets.1.gz
   /usr/share/man/man1/dbus-daemon.1.gz
   /usr/share/man/man1/dbus-launch.1.gz
@@ -124,7 +123,7 @@ Files included in the binary package:
 Port Notes:
 
 ----- version 1.2.12-10 -----
-Rebuilt for cygwin-1.7.
+Initial release for Cygwin 1.7.
 
 
 Cygwin port maintained by:

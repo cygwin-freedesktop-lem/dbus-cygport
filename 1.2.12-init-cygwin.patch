@@ -82,7 +82,7 @@
 +      csih_warning "The following function requires administrator privileges!"
 +      if csih_request "Do you want to install messagebus as service?"
 +      then
-+        if cygrunsrv -I messagebus -d "CYGWIN D-Bus system service" -p @EXPANDED_BINDIR@/dbus-daemon -a "--fork --system" -x @DBUS_SYSTEM_PID_FILE@
++        if cygrunsrv -I messagebus -d "CYGWIN D-Bus system service" -p @EXPANDED_BINDIR@/dbus-daemon -a "--nofork --system"
 +        then
 +	  echo
 +	  csih_inform "The messagebus service has been installed under the LocalSystem"

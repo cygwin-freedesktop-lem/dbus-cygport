@@ -14,25 +14,23 @@ USER NOTES:
 Use messagebus-config to install the D-Bus system service.
 
 Runtime requirements:
-  cygwin-1.7.0-51
+  cygwin-1.7.5-1
   libexpat1-2.0.1-1
-  libgcc1-4.3.2-2
-  libX11_6-1.2.1-1
+  libgcc1-4.3.4-3
+  libX11_6-1.3.3-1
   csih
 
 Build requirements:
 (besides corresponding -devel packages)
-  autoconf2.5-2.63-10
-  automake1.10-1.10.2-10
-  binutils-2.19.51-1
-  cygport-0.9.7-1
-  gawk-3.1.6-2
-  gcc4-core-4.3.2-2
-  gcc4-g++-4.3.2-2
-  libtool-2.2.7a-14
+  autoconf2.5-2.65-1
+  automake1.11-1.11.1-1
+  binutils-2.20.51-2
+  cygport-0.9.83-1
+  gawk-3.1.7-1
+  gcc4-core-4.3.4-3
+  libtool-2.2.7a-15
   make-3.81-2
   pkg-config-0.23b-10
-  sed-4.1.5-2
 
 Canonical website:
   http://www.freedesktop.org/Software/dbus
@@ -43,85 +41,25 @@ Canonical download:
 -------------------------------------------
 
 Build instructions:
-  unpack dbus-1.2.16-X-src.tar.bz2
+  unpack dbus-1.2.24-X-src.tar.bz2
     if you use setup to install this src package, it will be
 	 unpacked under /usr/src automatically
   cd /usr/src
-  cygport ./dbus-1.2.16-X.cygport all
+  cygport ./dbus-1.2.24-X.cygport all
 
 This will create:
-  /usr/src/dbus-1.2.16-X-src.tar.bz2
-  /usr/src/dbus-1.2.16-X.tar.bz2
-  /usr/src/libdbus1-devel-1.2.16-X.tar.bz2
-  /usr/src/libdbus1_3-1.2.16-X.tar.bz2
+  /usr/src/dbus-1.2.24-X-src.tar.bz2
+  /usr/src/dbus-1.2.24-X.tar.bz2
+  /usr/src/libdbus1-devel-1.2.24-X.tar.bz2
+  /usr/src/libdbus1_3-1.2.24-X.tar.bz2
 
 -------------------------------------------
 
-Files included in the binary package:
-
-(dbus)
-  /etc/dbus-1/session.conf
-  /etc/dbus-1/session.d/.keep-dbus
-  /etc/dbus-1/system.conf
-  /etc/dbus-1/system.d/.keep-dbus
-  /etc/postinstall/dbus.sh
-  /etc/preremove/dbus.sh
-  /usr/bin/dbus-cleanup-sockets.exe
-  /usr/bin/dbus-daemon.exe
-  /usr/bin/dbus-launch.exe
-  /usr/bin/dbus-monitor.exe
-  /usr/bin/dbus-send.exe
-  /usr/bin/dbus-uuidgen.exe
-  /usr/bin/messagebus-config
-  /usr/lib/dbus-1.0/dbus-daemon-launch-helper.exe
-  /usr/share/dbus-1/services/.keep-dbus
-  /usr/share/dbus-1/system-services/.keep-dbus
-  /usr/share/doc/dbus/AUTHORS
-  /usr/share/doc/dbus/COPYING
-  /usr/share/doc/dbus/ChangeLog
-  /usr/share/doc/dbus/HACKING
-  /usr/share/doc/dbus/README
-  /usr/share/doc/dbus/TODO
-  /usr/share/doc/dbus/html/dbus-faq.html
-  /usr/share/doc/dbus/html/dbus-specification.html
-  /usr/share/doc/dbus/html/dbus-test-plan.html
-  /usr/share/doc/dbus/html/dbus-tutorial.html
-  /usr/share/man/man1/dbus-cleanup-sockets.1.gz
-  /usr/share/man/man1/dbus-daemon.1.gz
-  /usr/share/man/man1/dbus-launch.1.gz
-  /usr/share/man/man1/dbus-monitor.1.gz
-  /usr/share/man/man1/dbus-send.1.gz
-  /usr/share/man/man1/dbus-uuidgen.1.gz
-
-(libdbus1_3)
-  /usr/bin/cygdbus-1-3.dll
-
-(libdbus1-devel)
-  /usr/include/dbus-1.0/dbus/dbus-address.h
-  /usr/include/dbus-1.0/dbus/dbus-bus.h
-  /usr/include/dbus-1.0/dbus/dbus-connection.h
-  /usr/include/dbus-1.0/dbus/dbus-errors.h
-  /usr/include/dbus-1.0/dbus/dbus-macros.h
-  /usr/include/dbus-1.0/dbus/dbus-memory.h
-  /usr/include/dbus-1.0/dbus/dbus-message.h
-  /usr/include/dbus-1.0/dbus/dbus-misc.h
-  /usr/include/dbus-1.0/dbus/dbus-pending-call.h
-  /usr/include/dbus-1.0/dbus/dbus-protocol.h
-  /usr/include/dbus-1.0/dbus/dbus-server.h
-  /usr/include/dbus-1.0/dbus/dbus-shared.h
-  /usr/include/dbus-1.0/dbus/dbus-signature.h
-  /usr/include/dbus-1.0/dbus/dbus-threads.h
-  /usr/include/dbus-1.0/dbus/dbus-types.h
-  /usr/include/dbus-1.0/dbus/dbus.h
-  /usr/lib/dbus-1.0/include/dbus/dbus-arch-deps.h
-  /usr/lib/libdbus-1.a
-  /usr/lib/libdbus-1.dll.a
-  /usr/lib/libdbus-1.la
-  /usr/lib/pkgconfig/dbus-1.pc
-
-------------------
-
 Port Notes:
+
+----- version 1.2.24-1 -----
+Version bump.
+Added patch to remove stale pidfiles on bus startup.
 
 ----- version 1.2.16-1 -----
 Version bump.

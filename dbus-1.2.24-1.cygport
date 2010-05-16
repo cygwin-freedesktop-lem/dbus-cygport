@@ -6,6 +6,7 @@ PATCH_URI="
 	1.2.1-install.patch
 	1.2.1-tests.patch
 	1.2.12-init-cygwin.patch
+	1.2.24-stale-pidfile.patch
 "
 
 PKG_NAMES="${PN} lib${PN}1_3 lib${PN}1-devel"

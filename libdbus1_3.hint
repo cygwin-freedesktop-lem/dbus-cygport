@@ -1,5 +1,5 @@
 category: System
-requires: libgcc1
+requires:
 external-source: dbus
 sdesc: "Freedesktop message bus system (runtime library)"
 ldesc: "D-BUS is a message bus system, a simple way for applications to talk

@@ -1,5 +1,5 @@
 NAME="dbus"
-VERSION=1.6.8
+VERSION=1.6.12
 RELEASE=1
 CATEGORY="System"
 SUMMARY="Freedesktop message bus system"
@@ -11,7 +11,7 @@ is built on top of a general one-to-one message passing framework, which can be
 used by any two apps to communicate directly (without going through the message
 bus daemon)."
 HOMEPAGE="http://www.freedesktop.org/wiki/Software/dbus"
-SRC_URI="http://dbus.freedesktop.org/releases/${PN}/${P}.tar.gz"
+SRC_URI="http://dbus.freedesktop.org/releases/dbus/dbus-${VERSION}.tar.gz"
 
 PKG_NAMES="dbus dbus-doc libdbus1_3 libdbus1-devel"
 dbus_REQUIRES="csih"

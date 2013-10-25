@@ -16,7 +16,7 @@ PATCH_URI="1.6.16-pthread-cygwin.patch"
 
 PKG_NAMES="dbus dbus-doc libdbus1_3 libdbus1-devel"
 dbus_REQUIRES="csih"
-dbus_CONTENTS="etc/ usr/bin/*.exe usr/bin/*-config usr/libexec/
+dbus_CONTENTS="etc/dbus-1/ etc/p* usr/bin/*.exe usr/bin/*-config usr/libexec/
                usr/share/dbus-1/ usr/share/doc/dbus/[ACHNRT]* usr/share/man/"
 dbus_doc_CATEGORY="Doc"
 dbus_doc_CONTENTS="--exclude=[ACHNRT]* usr/share/doc/dbus/"

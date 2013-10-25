@@ -1,0 +1,24 @@
+pthread_mutex_init(&mutex, NULL) uses PTHREAD_MUTEX_ERRORCHECK, even though
+PTHREAD_MUTEX_DEFAULT == PTHREAD_MUTEX_NORMAL.
+
+--- origsrc/dbus-1.6.16/dbus/dbus-sysdeps-pthread.c	2013-06-12 07:55:40.000000000 -0500
++++ src/dbus-1.6.16/dbus/dbus-sysdeps-pthread.c	2013-10-24 18:24:14.982884500 -0500
+@@ -80,13 +80,17 @@ DBusCMutex *
+ _dbus_platform_cmutex_new (void)
+ {
+   DBusCMutex *pmutex;
++  pthread_mutexattr_t mutexattr;
+   int result;
+ 
+   pmutex = dbus_new (DBusCMutex, 1);
+   if (pmutex == NULL)
+     return NULL;
+ 
+-  result = pthread_mutex_init (&pmutex->lock, NULL);
++  pthread_mutexattr_init (&mutexattr);
++  pthread_mutexattr_settype (&mutexattr, PTHREAD_MUTEX_NORMAL);
++  result = pthread_mutex_init (&pmutex->lock, &mutexattr);
++  pthread_mutexattr_destroy (&mutexattr);
+ 
+   if (result == ENOMEM || result == EAGAIN)
+     {

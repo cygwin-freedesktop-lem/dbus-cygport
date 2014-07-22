@@ -12,7 +12,6 @@ used by any two apps to communicate directly (without going through the message
 bus daemon)."
 HOMEPAGE="http://www.freedesktop.org/wiki/Software/dbus"
 SRC_URI="http://dbus.freedesktop.org/releases/dbus/dbus-${VERSION}.tar.gz"
-PATCH_URI="1.6.16-pthread-cygwin.patch"
 
 PKG_NAMES="dbus dbus-doc libdbus1_3 libdbus1-devel"
 dbus_REQUIRES="csih"

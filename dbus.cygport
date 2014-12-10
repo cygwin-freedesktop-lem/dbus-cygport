@@ -1,5 +1,5 @@
 NAME="dbus"
-VERSION=1.8.10
+VERSION=1.8.12
 RELEASE=1
 CATEGORY="System"
 SUMMARY="Freedesktop message bus system"

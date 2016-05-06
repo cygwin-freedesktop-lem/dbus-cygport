@@ -1,5 +1,5 @@
 NAME="dbus"
-VERSION=1.8.16
+VERSION=1.10.8
 RELEASE=1
 CATEGORY="System"
 SUMMARY="Freedesktop message bus system"
@@ -13,6 +13,7 @@ bus daemon)."
 HOMEPAGE="http://www.freedesktop.org/wiki/Software/dbus"
 SRC_URI="http://dbus.freedesktop.org/releases/dbus/dbus-${VERSION}.tar.gz"
 SRC_URI+=" http://pkgs.fedoraproject.org/cgit/dbus.git/plain/00-start-message-bus.sh"
+PATCH_URI="1.10.8-cygwin-credentials.patch"
 
 PKG_NAMES="dbus dbus-doc dbus-x11 libdbus1_3 libdbus1-devel"
 dbus_REQUIRES="csih"
@@ -53,8 +54,8 @@ DOCS="doc/TODO README.cygwin"
 HTMLDOCS="doc/*.html"
 
 KEEPDIRS="
-	/etc/dbus-1/session.d
-	/etc/dbus-1/system.d
+	/usr/share/dbus-1/session.d
+	/usr/share/dbus-1/system.d
 	/usr/share/dbus-1/services
 	/usr/share/dbus-1/system-services
 "

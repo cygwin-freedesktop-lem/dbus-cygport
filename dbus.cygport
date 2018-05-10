@@ -1,5 +1,5 @@
 NAME="dbus"
-VERSION=1.10.22
+VERSION=1.12.8
 RELEASE=1
 CATEGORY="System"
 SUMMARY="Freedesktop message bus system"
@@ -13,13 +13,23 @@ bus daemon)."
 HOMEPAGE="http://www.freedesktop.org/wiki/Software/dbus"
 SRC_URI="http://dbus.freedesktop.org/releases/dbus/dbus-${VERSION}.tar.gz"
 SRC_URI+=" http://pkgs.fedoraproject.org/cgit/dbus.git/plain/00-start-message-bus.sh"
+SRC_URI+=" messagebus.init"
 PATCH_URI="1.10.8-cygwin-credentials.patch"
 
 PKG_NAMES="dbus dbus-doc dbus-x11 libdbus1_3 libdbus1-devel"
 dbus_REQUIRES="csih"
-dbus_CONTENTS="--exclude=dbus-launch.*
-               etc/dbus-1/ etc/p* usr/bin/*.exe usr/bin/*-config usr/libexec/
-               usr/share/dbus-1/ usr/share/doc/dbus/[ACHNRT]* usr/share/man/"
+dbus_CONTENTS="
+	--exclude=dbus-launch.*
+	etc/dbus-1/
+	etc/p*
+	etc/rc.d/
+	usr/bin/*.exe
+	usr/libexec/
+	usr/share/dbus-1/
+	usr/share/doc/dbus/[ACHNRT]*
+	usr/share/man/
+	usr/share/xml/dbus-1/
+"
 dbus_doc_CATEGORY="Doc"
 dbus_doc_CONTENTS="--exclude=[ACHNRT]* usr/share/doc/dbus/"
 dbus_x11_CATEGORY="X11"
@@ -45,6 +55,9 @@ CYGCONF_ARGS="
 src_install() {
 	cd ${B}
 	cyginstall
+
+	exeinto /etc/rc.d/init.d
+	newexe ${S}/messagebus.init messagebus
 
 	exeinto /etc/X11/xinit/xinitrc.d
 	doexe ${S}/00-start-message-bus.sh

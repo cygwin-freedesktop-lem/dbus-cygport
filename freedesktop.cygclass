@@ -1,0 +1,65 @@
+# https://freedesktop.org/
+# https://gitlab.freedesktop.org/
+
+declare -A __FREEDESKTOP_REPOS=(
+  [dbus]="https://gitlab.freedesktop.org/dbus/dbus			dbus-@VERSION@"
+  [dbus-glib]="https://gitlab.freedesktop.org/dbus/dbus-glib		dbus-glib-@VERSION@"
+  [dbus-java]="https://gitlab.freedesktop.org/dbus/dbus-java"
+  [dbus-python]="https://gitlab.freedesktop.org/dbus/dbus-python	dbus-python-@VERSION@"
+  [dbus-test]="https://gitlab.freedesktop.org/dbus/dbus-test"
+  [default-icon-theme]="https://gitlab.freedesktop.org/xdg/default-icon-theme"
+  [desktop-file-utils]="https://gitlab.freedesktop.org/xdg/desktop-file-utils"
+  [pyxdg]="https://gitlab.freedesktop.org/xdg/pyxdg			rel-@VERSION@"
+  [shared-mime-info]="https://gitlab.freedesktop.org/xdg/shared-mime-info"
+  [sound-theme-spec]="https://gitlab.freedesktop.org/xdg/sound-theme-spec"
+  [startup-notification]="https://gitlab.freedesktop.org/xdg/startup-notification	STARTUP_NOTIFICATION_@VERSION@	_"
+  [xdg-sound-theme]="https://gitlab.freedesktop.org/xdg/xdg-sound-theme"
+  [xdg-specs]="https://gitlab.freedesktop.org/xdg/xdg-specs"
+  [xdg-user-dirs]="https://gitlab.freedesktop.org/xdg/xdg-user-dirs"
+  [xdg-utils]="https://gitlab.freedesktop.org/xdg/xdg-utils		v@VERSION@"
+  [xdgmime]="https://gitlab.freedesktop.org/xdg/xdgmime"
+)
+
+__freedesktop_arg1() { printf "%s" "$1"; }
+__freedesktop_arg2() { printf "%s" "$2"; }
+__freedesktop_arg3() { printf "%s" "$3"; }
+__freedesktop_repo_uri() {
+  local URI=$(__freedesktop_arg1 ${__FREEDESKTOP_REPOS[$1]})
+  printf "%s" "${URI:-Unkown project: $1}"
+}
+
+__freedesktop_repo_refname() {
+  local REFNAME_PATTERN=$(__freedesktop_arg2 ${__FREEDESKTOP_REPOS[$1]})
+  : ${REFNAME_PATTERN:=@VERSION@}
+  local VERSION_PATTERN=$(__freedesktop_arg3 ${__FREEDESKTOP_REPOS[$1]})
+  local V=$2
+  case "${VERSION_PATTERN}" in
+    _ ) VERSION=${VERSION//./_} ;;
+  esac
+  printf "%s" "${REFNAME_PATTERN/@VERSION@/${VERSION}}"
+}
+
+freedesktop_setup() {
+  local NAME=$1
+  local VERSION=$2
+
+  GIT_REPO=$(__freedesktop_repo_uri "${NAME}")
+  GIT_BASENAME="${GIT_REPO##*/}"
+  case "${VERSION}" in
+    # Use VERSION as a REFNAME except the first '@'.
+    @* )
+      GIT_REFNAME="${VERSION#@}"
+      ;;
+    # Convert VERSION to a REFNAME.
+    * )
+     GIT_REFNAME=$(__freedesktop_repo_refname "${NAME}" "${VERSION}")
+     ;;
+  esac
+  GIT_ARCHIVE_EXT=".tar.bz2"
+
+  SRC_URI="${GIT_REPO}/-/archive/${GIT_REFNAME}/${GIT_BASENAME}-${GIT_REFNAME}${GIT_ARCHIVE_EXT}"
+  SRC_DIR="${GIT_BASENAME}-${GIT_REFNAME}"
+}
+
+# freedesktop_setup "${NAME}" "${VERSION}"
+# echo ${SRC_URI}
